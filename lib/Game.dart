@@ -13,6 +13,7 @@ class _GameState extends State<Game> {
   Text customTitle(String text) {
     return Text(
       text,
+      textAlign: TextAlign.center,
       style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 18
@@ -28,9 +29,10 @@ class _GameState extends State<Game> {
         title: Text('Joken Po'),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.only(top: 40, bottom: 30),
+            padding: EdgeInsets.only(top: 32, bottom: 10),
             child: customTitle('App choice: '),
           ),
           Image.asset(
@@ -38,8 +40,8 @@ class _GameState extends State<Game> {
               cacheWidth: this.size,
           ),
           Padding(
-            padding: EdgeInsets.only(top: 40, bottom: 30),
-            child: customTitle('You lose: ')
+            padding: EdgeInsets.only(top: 32, bottom: 10),
+            child: customTitle('Choose your option: ')
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
