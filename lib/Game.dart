@@ -8,7 +8,7 @@ class Game extends StatefulWidget {
 
 class _GameState extends State<Game> {
 
-  final size = 80;
+  final double size = 80.0;
 
   Text customTitle(String text) {
     return Text(
@@ -37,27 +37,31 @@ class _GameState extends State<Game> {
           ),
           Image.asset(
               'assets/images/padrao.png',
-              cacheWidth: this.size,
+              height: this.size,
           ),
           Padding(
             padding: EdgeInsets.only(top: 32, bottom: 10),
             child: customTitle('Choose your option: ')
           ),
           Row(
+            /*
+            * Below you can see how to organize
+            * item inside a row using mainAxisAlignment
+            * */
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Image.asset(
                   'assets/images/pedra.png',
-                  cacheWidth: this.size,
+                  height: this.size,
 
               ),
               Image.asset(
                   'assets/images/papel.png',
-                  cacheWidth: this.size,
+                  height: this.size,
               ),
               Image.asset(
                   'assets/images/tesoura.png',
-                  cacheWidth: this.size,
+                  height: this.size,
               ),
             ],
           )
