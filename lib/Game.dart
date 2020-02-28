@@ -1,3 +1,5 @@
+import 'dart:math' show Random;
+
 import 'package:flutter/material.dart';
 
 
@@ -10,6 +12,8 @@ class _GameState extends State<Game> {
 
   final double size = 80.0;
 
+  MaterialAccentColor actualColor;
+
   Text customTitle(String text) {
     return Text(
       text,
@@ -21,12 +25,22 @@ class _GameState extends State<Game> {
     );
   }
 
+  /*
+  * Generating random colors
+  * */
+  void changeThemeColors() {
+      setState(() {
+        this.actualColor = Colors.accents[Random().nextInt(16)];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
       appBar: AppBar(
         title: Text('Joken Po'),
+        backgroundColor: this.actualColor,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -35,9 +49,12 @@ class _GameState extends State<Game> {
             padding: EdgeInsets.only(top: 32, bottom: 10),
             child: customTitle('App choice: '),
           ),
-          Image.asset(
+          GestureDetector(
+            onDoubleTap: changeThemeColors,
+            child: Image.asset(
               'assets/images/padrao.png',
               height: this.size,
+            ),
           ),
           Padding(
             padding: EdgeInsets.only(top: 32, bottom: 10),
@@ -64,6 +81,16 @@ class _GameState extends State<Game> {
                   height: this.size,
               ),
             ],
+          ),
+          Padding(
+              padding: EdgeInsets.only(top: 100),
+              child: RaisedButton(
+                onPressed: this.changeThemeColors,
+                color: Colors.green,
+                textColor: Colors.white,
+                padding: EdgeInsets.all(30),
+                child: Text('Change color'),
+              ),
           )
         ],
       ),
