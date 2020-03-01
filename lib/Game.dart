@@ -49,14 +49,14 @@ class _GameState extends State<Game> {
 
   void selectOption(String player) {
     String computer = this.options[Random().nextInt(3)];
-    String message = isWinner(computer, player);
+    String message = getPlayerResultMessage(computer, player);
     this.setState((){
       this.actualImage = computer;
       this.message = message;
     });
   }
 
-  String isWinner(String computer, String player) {
+  String getPlayerResultMessage(String computer, String player) {
     var playerProperties;
     this.relationWinner.forEach((key, item) {
       if(key == player) {
